@@ -10,9 +10,11 @@ int numberValidator(int userGuess)
 void main()
 {
     int counter = 1;
-    Console.Write($"Guess my secret number ({counter}): ");
+    Console.Write($"You have 4 guesses \n Guess my secret number ({counter}): ");
+    Random gen = new Random();
+
     int userGuess = 0;
-    int theNumber = 42;
+    int theNumber = gen.Next(1, 100);
     userGuess = numberValidator(userGuess);
     bool correctGuess = false;
     while (counter < 4 && !correctGuess)
@@ -25,10 +27,12 @@ void main()
         }
         else
         {
+            Console.WriteLine($"You have {5 - counter} guesses left!");
             Console.Write($"Guess again({counter}): ");
             userGuess = numberValidator(userGuess);
         }
     }
+
 
 
 }
