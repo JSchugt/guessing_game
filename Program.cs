@@ -21,18 +21,23 @@ int difficultyValidator(int userGuess)
     {
         userGuess = 6;
     }
-    else
+    else if (userGuess == 3)
     {
         userGuess = 4;
+    }
+    else
+    {
+        userGuess = 1000000;
     }
     return userGuess;
 }
 void main()
 {
-    Console.WriteLine("What difficulty would you like \n 1. Easy \n 2. Medium \n 3. Hard");
+    Console.WriteLine("What difficulty would you like \n 1. Easy \n 2. Medium \n 3. Hard \n 4. Cheater");
     int difficulty = difficultyValidator(0);
     int counter = 1;
-    Console.Write($"You have {difficulty} guesses \n Guess my secret number ({counter}): ");
+    string diff = difficulty > 4 ? "unlimited" : difficulty.ToString();
+    Console.Write($"You have {diff} guesses \n Guess my secret number ({counter}): ");
     Random gen = new Random();
 
     int userGuess = 0;
@@ -46,6 +51,13 @@ void main()
         {
             Console.WriteLine("You got it right on the nose!");
             correctGuess = true;
+        }
+        else if (difficulty > 4)
+        {
+            string range = (userGuess > theNumber) ? "Your guess was too high" : "Your guess was too low";
+            Console.WriteLine(range);
+            Console.Write($"Guess again({counter}): ");
+            userGuess = numberValidator(userGuess);
         }
         else
         {
