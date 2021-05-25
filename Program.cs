@@ -27,14 +27,14 @@ void main()
         }
         else
         {
+            string range = (userGuess > theNumber) ? "Your guess was too high" : "Your guess was too low";
+            Console.WriteLine(range);
             Console.WriteLine($"You have {5 - counter} guesses left!");
             Console.Write($"Guess again({counter}): ");
             userGuess = numberValidator(userGuess);
         }
     }
-
-
-
+    Console.WriteLine(theNumber);
 }
 
 main();
