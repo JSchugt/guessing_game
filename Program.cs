@@ -9,14 +9,15 @@ int numberValidator(int userGuess)
 }
 void main()
 {
-    Console.Write("Guess my secret number: ");
     int counter = 1;
+    Console.Write($"Guess my secret number ({counter}): ");
     int userGuess = 0;
     int theNumber = 42;
     userGuess = numberValidator(userGuess);
     bool correctGuess = false;
     while (counter < 4 && !correctGuess)
     {
+        counter++;
         if (theNumber == userGuess)
         {
             Console.WriteLine("You got it right on the nose!");
@@ -24,10 +25,9 @@ void main()
         }
         else
         {
-            Console.Write("Guess again: ");
+            Console.Write($"Guess again({counter}): ");
             userGuess = numberValidator(userGuess);
         }
-        counter++;
     }
 
 
