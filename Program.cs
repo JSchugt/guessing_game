@@ -1,22 +1,35 @@
 ﻿using System;
-
-void main()
+int numberValidator(int userGuess)
 {
-    Console.Write("Guess my secret number: ");
-    int userGuess = 0;
     while (!int.TryParse(Console.ReadLine(), out userGuess))
     {
         Console.Write("I need an integer! ");
     }
+    return userGuess;
+}
+void main()
+{
+    Console.Write("Guess my secret number: ");
+    int counter = 1;
+    int userGuess = 0;
     int theNumber = 42;
-    if (theNumber == userGuess)
+    userGuess = numberValidator(userGuess);
+    bool correctGuess = false;
+    while (counter < 4 && !correctGuess)
     {
-        Console.WriteLine("You got it right on the nose!");
+        if (theNumber == userGuess)
+        {
+            Console.WriteLine("You got it right on the nose!");
+            correctGuess = true;
+        }
+        else
+        {
+            Console.Write("Guess again: ");
+            userGuess = numberValidator(userGuess);
+        }
+        counter++;
     }
-    else
-    {
-        Console.WriteLine("I win mwhahahahahhah!");
-    }
+
 
 }
 
