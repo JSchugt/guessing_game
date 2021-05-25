@@ -8,7 +8,16 @@ void main()
     {
         Console.Write("I need an integer! ");
     }
-    Console.WriteLine($"You guessed {userGuess}");
+    int theNumber = 42;
+    if (theNumber == userGuess)
+    {
+        Console.WriteLine("You got it right on the nose!");
+    }
+    else
+    {
+        Console.WriteLine("I win mwhahahahahhah!");
+    }
+
 }
 
 main();
